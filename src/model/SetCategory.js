@@ -27,10 +27,14 @@ class setCategory {
 
   isAddToResults(categoryNumber) {
     let booleanResult = false;
-    this.#counts.forEach((number, index) => {
-      if (number === 2 && categoryNumber - 1 === index) booleanResult = false;
-      else booleanResult = true;
-    });
+    for (let i = 0; i < this.#counts.length; i++) {
+      if (this.#counts[i] === 2 && i === categoryNumber - 1) {
+        booleanResult = false;
+        break;
+      } else {
+        booleanResult = true;
+      }
+    }
     return booleanResult;
   }
 
