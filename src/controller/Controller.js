@@ -25,13 +25,13 @@ class Controller {
 
   #checkCoach(input) {
     try {
-      Validation.coachName(input);
       this.#coachs = input.split(',');
+      Validation.coachName(this.#coachs);
       Validation.coachNumber(this.#coachs);
       this.#checkCoachList();
     } catch (error) {
       OuputView.errorMessage(error);
-      this.#inputCoach;
+      this.#inputCoach();
     }
   }
 
@@ -42,7 +42,6 @@ class Controller {
   #inputNotEat(coachName) {
     InputView.notEat(coachName, (input) => {
       this.#checkNotEat(coachName, input);
-      this.#index += 1;
       if (this.#index === this.#coachs.length) this.#deliverNotEatList();
       else this.#checkCoachList();
     });
@@ -52,6 +51,7 @@ class Controller {
     try {
       Validation.notEat(input);
       this.#notEatList.push([coachName, input]);
+      this.#index += 1;
     } catch (error) {
       OuputView.errorMessage(error);
       this.#checkCoachList();
