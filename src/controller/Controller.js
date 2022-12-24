@@ -1,6 +1,7 @@
 const InputView = require('../view/InputView');
 const OuputView = require('../view/OutputView');
 const Validation = require('../utils/Validation');
+const { UTIL } = require('../utils/constant');
 
 class Controller {
   #index = 0;
@@ -24,7 +25,7 @@ class Controller {
 
   #checkCoach(input) {
     try {
-      this.#coachs = input.split(',');
+      this.#coachs = input.split(UTIL.SEPARATOR);
       Validation.coachName(this.#coachs);
       Validation.coachNumber(this.#coachs);
       this.#service.makeCoachList(this.#coachs);
@@ -68,7 +69,10 @@ class Controller {
   }
 
   #outputCategory() {
-    const category = this.#service.defineCategoryList().join(',').replace(/,/g, ' | ');
+    const category = this.#service
+      .defineCategoryList()
+      .join(UTIL.SEPARATOR)
+      .replace(/,/g, UTIL.TRANSLATOR);
     OuputView.category(category);
     this.#outputResult();
   }
@@ -76,7 +80,10 @@ class Controller {
   #outputResult() {
     const results = this.#service.defineCoachFoodOfWeak();
     results.forEach((list) => {
-      OuputView.listResult(list.coach, list.result.join(',').replace(/,/g, ' | '));
+      OuputView.listResult(
+        list.coach,
+        list.result.join(UTIL.SEPARATOR).replace(/,/g, UTIL.TRANSLATOR),
+      );
     });
     OuputView.endMent();
   }

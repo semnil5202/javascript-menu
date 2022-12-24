@@ -1,18 +1,13 @@
 const { Random } = require('@woowacourse/mission-utils');
+const { CATEGORY } = require('../utils/constant');
 
 class Category {
-  #category = {
-    1: '일식',
-    2: '한식',
-    3: '중식',
-    4: '아시안',
-    5: '양식',
-  };
+  #category = CATEGORY.LIST;
   #counts = [0, 0, 0, 0, 0];
   #list = [];
 
   makeCategoryList() {
-    while (this.#list.length !== 5) {
+    while (this.#list.length !== CATEGORY.LENGTH) {
       this.categoryOfWeak();
     }
     return this.NumberToName();
@@ -28,7 +23,7 @@ class Category {
   isAddToResults(categoryNumber) {
     let booleanResult = false;
     for (let i = 0; i < this.#counts.length; i++) {
-      if (this.#counts[i] === 2 && i === categoryNumber - 1) {
+      if (this.#counts[i] === CATEGORY.DUPLICATE && i === categoryNumber - 1) {
         booleanResult = false;
         break;
       } else {
@@ -47,7 +42,7 @@ class Category {
   }
 
   randomGenerator() {
-    return Random.pickNumberInRange(1, 5);
+    return Random.pickNumberInRange(CATEGORY.MIN, CATEGORY.MAX);
   }
 }
 
