@@ -1,6 +1,6 @@
 const { Random } = require('@woowacourse/mission-utils');
 
-class setCategory {
+class Category {
   #category = {
     1: '일식',
     2: '한식',
@@ -51,4 +51,4 @@ class setCategory {
   }
 }
 
-module.exports = setCategory;
+module.exports = Category;

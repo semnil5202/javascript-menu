@@ -1,5 +1,5 @@
-const SetCategory = require('../model/SetCategory');
-const SetFood = require('../model/SetFood');
+const Category = require('../model/Category');
+const Food = require('../model/Food');
 
 class Service {
   #catogoryList;
@@ -12,14 +12,14 @@ class Service {
   defineCoachFoodOfWeak() {
     const results = [];
     this.#coachNotEatList.forEach((list) => {
-      const foods = new SetFood(list, this.#catogoryList).foodOfWeak();
+      const foods = new Food(list, this.#catogoryList).foodOfWeak();
       results.push(foods);
     });
     return results;
   }
 
   defineCategoryList() {
-    this.#catogoryList = new SetCategory().makeCategoryList();
+    this.#catogoryList = new Category().makeCategoryList();
     return this.#catogoryList;
   }
 }
