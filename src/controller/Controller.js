@@ -43,7 +43,7 @@ class Controller {
   #inputNotEat(coachName) {
     InputView.notEat(coachName, (input) => {
       this.#checkNotEat(input);
-      if (this.#index === this.#coachs.length) this.#deliverNotEatList();
+      if (this.#index === this.#coachs.length) this.#outputResultMent();
       else this.#checkCoachList();
     });
   }
@@ -57,10 +57,6 @@ class Controller {
       OuputView.errorMessage(error);
       this.#checkCoachList();
     }
-  }
-
-  #deliverNotEatList() {
-    this.#outputResultMent();
   }
 
   #outputResultMent() {
