@@ -23,12 +23,12 @@ class Food {
 
   #recommendFood(foodList) {
     const recommend = foodList[this.#shuffleNumber() - 1];
-    if (this.#isNotEatFood(recommend)) this.#recommendFood();
-    else this.#checkDuplicateMenu(recommend);
+    if (this.#isNotEatFood(recommend)) this.#recommendFood(foodList);
+    else this.#checkDuplicateMenu(recommend, foodList);
   }
 
-  #checkDuplicateMenu(recommend) {
-    if (this.#results.includes(recommend)) this.#recommendFood();
+  #checkDuplicateMenu(recommend, foodList) {
+    if (this.#results.includes(recommend)) this.#recommendFood(foodList);
     if (!this.#results.includes(recommend)) this.#results.push(recommend);
   }
 
