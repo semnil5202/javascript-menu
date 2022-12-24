@@ -12,7 +12,6 @@ class Food {
   #notEatList;
   #categoryList;
   #results = [];
-  #foodList;
 
   constructor(coach, categoryList) {
     this.#coachName = coach.getCoachName();
@@ -22,14 +21,14 @@ class Food {
 
   foodOfWeak() {
     this.#categoryList.forEach((category) => {
-      this.#foodList = this.#makeFoodList(category);
-      this.#recommendFood();
+      const foodList = this.#makeFoodList(category);
+      this.#recommendFood(foodList);
     });
     return { coach: this.#coachName, result: this.#results };
   }
 
-  #recommendFood() {
-    const recommend = this.#foodList[this.#shuffleNumber() - 1];
+  #recommendFood(foodList) {
+    const recommend = foodList[this.#shuffleNumber() - 1];
     if (this.#isNotEatFood(recommend)) this.#recommendFood();
     else this.#checkDuplicateMenu(recommend);
   }
