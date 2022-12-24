@@ -3,7 +3,6 @@ const { CATEGORY } = require('../utils/constant');
 
 class Category {
   #category = CATEGORY.LIST;
-  #counts = [0, 0, 0, 0, 0];
   #list = [];
 
   makeCategoryList() {
@@ -15,22 +14,15 @@ class Category {
 
   categoryOfWeak() {
     const categoryNumber = this.randomGenerator();
-    if (this.#list.includes(categoryNumber)) this.#counts[categoryNumber - 1] += 1;
     if (this.isAddToResults(categoryNumber)) this.#list.push(categoryNumber);
     else this.categoryOfWeak();
   }
 
   isAddToResults(categoryNumber) {
-    let booleanResult = false;
-    for (let i = 0; i < this.#counts.length; i++) {
-      if (this.#counts[i] === CATEGORY.DUPLICATE && i === categoryNumber - 1) {
-        booleanResult = false;
-        break;
-      } else {
-        booleanResult = true;
-      }
+    if (this.#list.filter((category) => category === categoryNumber).length < 2) {
+      return true;
     }
-    return booleanResult;
+    return false;
   }
 
   NumberToName() {
