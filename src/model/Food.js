@@ -15,8 +15,8 @@ class Food {
   #foodList;
 
   constructor(coachNotEatList, categoryList) {
-    this.#coachName = coachNotEatList[0];
-    this.#notEatList = coachNotEatList[1].split(',');
+    this.#coachName = coachNotEatList.getCoachName();
+    this.#notEatList = coachNotEatList.getNotEatList().split(',');
     this.#categoryList = categoryList;
   }
 
