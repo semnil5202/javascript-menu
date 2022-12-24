@@ -14,9 +14,9 @@ class Food {
   #results = [];
   #foodList;
 
-  constructor(coach, categoryList) {
-    this.#coachName = coach.getCoachName();
-    this.#notEatList = coach.getNotEatList().split(',');
+  constructor(coachNotEatList, categoryList) {
+    this.#coachName = coachNotEatList.getCoachName();
+    this.#notEatList = coachNotEatList.getNotEatList().split(',');
     this.#categoryList = categoryList;
   }
 
