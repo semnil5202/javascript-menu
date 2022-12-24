@@ -1,7 +1,7 @@
 const UTIL = Object.freeze({
   SHUFFLE_LIST: [1, 2, 3, 4, 5, 6, 7, 8, 9],
   SHUFFLE_INDEX: 0,
-  SEPARATOR: ', ',
+  SEPARATOR: ',',
   TRANSLATOR: ' | ',
   FOOD_SEPARATOR: ', ',
 });
