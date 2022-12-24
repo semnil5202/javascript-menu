@@ -5,7 +5,6 @@ const Validation = require('../utils/Validation');
 class Controller {
   #index = 0;
   #coachs;
-  #notEatList = [];
   #service;
 
   constructor(service) {
@@ -28,6 +27,7 @@ class Controller {
       this.#coachs = input.split(',');
       Validation.coachName(this.#coachs);
       Validation.coachNumber(this.#coachs);
+      this.#service.makeCoachList(this.#coachs);
       this.#checkCoachList();
     } catch (error) {
       OuputView.errorMessage(error);
@@ -41,16 +41,16 @@ class Controller {
 
   #inputNotEat(coachName) {
     InputView.notEat(coachName, (input) => {
-      this.#checkNotEat(coachName, input);
+      this.#checkNotEat(input);
       if (this.#index === this.#coachs.length) this.#deliverNotEatList();
       else this.#checkCoachList();
     });
   }
 
-  #checkNotEat(coachName, input) {
+  #checkNotEat(input) {
     try {
       Validation.notEat(input);
-      this.#notEatList.push([coachName, input]);
+      this.#service.setCoachNotEatList(this.#index, input);
       this.#index += 1;
     } catch (error) {
       OuputView.errorMessage(error);
@@ -59,7 +59,6 @@ class Controller {
   }
 
   #deliverNotEatList() {
-    this.#service.defineCoachNotEatList(this.#notEatList);
     this.#outputResultMent();
   }
 
