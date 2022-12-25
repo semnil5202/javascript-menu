@@ -4,8 +4,14 @@ const Coach = require('../model/Coach');
 const ServiceResultDto = require('../dto/ServiceResultDto');
 
 class Service {
+  static #instance;
   #catogoryList;
   #coachLists = [];
+
+  constructor() {
+    if (Service.#instance !== undefined) return Service.#instance;
+    Service.#instance = this;
+  }
 
   makeCoachList(coachs) {
     coachs.forEach((coachName) => {

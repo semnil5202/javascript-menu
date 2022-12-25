@@ -3,11 +3,15 @@ const OuputView = require('../view/OutputView');
 const { UTIL } = require('../utils/constant');
 
 class Controller {
+  static #instance;
   #index = 0;
   #service;
   #validation;
 
   constructor(service, validation) {
+    if (Controller.#instance !== undefined) return Controller.#instance;
+    Controller.#instance = this;
+
     this.#service = service;
     this.#validation = validation;
   }
