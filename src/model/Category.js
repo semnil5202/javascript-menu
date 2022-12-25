@@ -8,25 +8,25 @@ class Category {
 
   makeCategoryList() {
     while (this.#list.length !== CATEGORY.LENGTH) {
-      this.categoryOfWeak();
+      this.#categoryOfWeak();
     }
-    return new ModelResultDto(null, null, this.NumberToName(), null);
+    return new ModelResultDto(null, null, this.#NumberToName(), null);
   }
 
-  categoryOfWeak() {
-    const categoryNumber = this.randomGenerator();
-    if (this.isAddToResults(categoryNumber)) this.#list.push(categoryNumber);
-    else this.categoryOfWeak();
+  #categoryOfWeak() {
+    const categoryNumber = this.#randomGenerator();
+    if (this.#isAddToResults(categoryNumber)) this.#list.push(categoryNumber);
+    else this.#categoryOfWeak();
   }
 
-  isAddToResults(categoryNumber) {
+  #isAddToResults(categoryNumber) {
     if (this.#list.filter((category) => category === categoryNumber).length < 2) {
       return true;
     }
     return false;
   }
 
-  NumberToName() {
+  #NumberToName() {
     const results = [];
     for (let i = 0; i < this.#list.length; i++) {
       results.push(this.#category[this.#list[i]]);
@@ -34,7 +34,7 @@ class Category {
     return results;
   }
 
-  randomGenerator() {
+  #randomGenerator() {
     return Random.pickNumberInRange(CATEGORY.MIN, CATEGORY.MAX);
   }
 }
