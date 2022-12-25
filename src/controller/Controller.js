@@ -69,7 +69,7 @@ class Controller {
 
   #outputCategory() {
     const category = this.#service
-      .defineCategoryList()
+      .setCategoryList()
       .join(UTIL.SEPARATOR)
       .replace(/,/g, UTIL.TRANSLATOR);
     OuputView.category(category);
@@ -77,7 +77,7 @@ class Controller {
   }
 
   #outputResult() {
-    const results = this.#service.defineCoachFoodOfWeek().getFoodOfWeek();
+    const results = this.#service.sendCoachFoodOfWeekToDto().getFoodOfWeek();
     results.forEach((list) => {
       OuputView.listResult(
         list.getCoachName(),

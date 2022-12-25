@@ -23,7 +23,7 @@ class Service {
     this.#coachLists[coachNumber].setNotEatList(notEatLists);
   }
 
-  defineCoachFoodOfWeek() {
+  sendCoachFoodOfWeekToDto() {
     const results = [];
     this.#coachLists.forEach((list) => {
       const foods = new Food(list, this.#catogoryList).foodOfWeek();
@@ -32,7 +32,7 @@ class Service {
     return new ServiceResultDto(results);
   }
 
-  defineCategoryList() {
+  setCategoryList() {
     this.#catogoryList = new Category().makeCategoryList().getCategory();
     return this.#catogoryList;
   }
