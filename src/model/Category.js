@@ -1,5 +1,6 @@
 const { Random } = require('@woowacourse/mission-utils');
 const { CATEGORY } = require('../utils/constant');
+const ModelResultDto = require('../dto/ModelResultDto');
 
 class Category {
   #category = CATEGORY.LIST;
@@ -9,7 +10,7 @@ class Category {
     while (this.#list.length !== CATEGORY.LENGTH) {
       this.categoryOfWeak();
     }
-    return this.NumberToName();
+    return new ModelResultDto(null, null, this.NumberToName(), null);
   }
 
   categoryOfWeak() {

@@ -1,5 +1,6 @@
 const { Random } = require('@woowacourse/mission-utils');
 const { UTIL, SAMPLE } = require('../utils/constant');
+const ModelResultDto = require('../dto/ModelResultDto');
 
 class Food {
   #coachName;
@@ -8,8 +9,8 @@ class Food {
   #results = [];
 
   constructor(coach, categoryList) {
-    this.#coachName = coach.getCoachName();
-    this.#notEatList = coach.getNotEatList().split(UTIL.SEPARATOR);
+    this.#coachName = coach.sendToDto().getCoachName();
+    this.#notEatList = coach.sendToDto().getNotEatList().split(UTIL.SEPARATOR);
     this.#categoryList = categoryList;
   }
 
@@ -18,7 +19,7 @@ class Food {
       const foodList = this.#makeFoodList(category);
       this.#recommendFood(foodList);
     });
-    return { coach: this.#coachName, result: this.#results };
+    return new ModelResultDto(this.#coachName, null, null, this.#results);
   }
 
   #recommendFood(foodList) {

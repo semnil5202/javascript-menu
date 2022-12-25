@@ -1,3 +1,5 @@
+const ModelResultDto = require('../dto/ModelResultDto');
+
 class Coach {
   #name;
   #notEatLists;
@@ -10,12 +12,8 @@ class Coach {
     this.#notEatLists = notEatLists;
   }
 
-  getCoachName() {
-    return this.#name;
-  }
-
-  getNotEatList() {
-    return this.#notEatLists;
+  sendToDto() {
+    return new ModelResultDto(this.#name, this.#notEatLists, null, null);
   }
 }
 

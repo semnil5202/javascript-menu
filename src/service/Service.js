@@ -1,6 +1,7 @@
 const Category = require('../model/Category');
 const Food = require('../model/Food');
 const Coach = require('../model/Coach');
+const ServiceResultDto = require('../dto/ServiceResultDto');
 
 class Service {
   #catogoryList;
@@ -22,11 +23,11 @@ class Service {
       const foods = new Food(list, this.#catogoryList).foodOfWeak();
       results.push(foods);
     });
-    return results;
+    return new ServiceResultDto(results);
   }
 
   defineCategoryList() {
-    this.#catogoryList = new Category().makeCategoryList();
+    this.#catogoryList = new Category().makeCategoryList().getCategory();
     return this.#catogoryList;
   }
 }

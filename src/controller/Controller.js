@@ -74,11 +74,11 @@ class Controller {
   }
 
   #outputResult() {
-    const results = this.#service.defineCoachFoodOfWeak();
+    const results = this.#service.defineCoachFoodOfWeak().getFoodOfWeak();
     results.forEach((list) => {
       OuputView.listResult(
-        list.coach,
-        list.result.join(UTIL.SEPARATOR).replace(/,/g, UTIL.TRANSLATOR),
+        list.getCoachName(),
+        list.getFood().join(UTIL.SEPARATOR).replace(/,/g, UTIL.TRANSLATOR),
       );
     });
     OuputView.endMent();
