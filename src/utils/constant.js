@@ -53,6 +53,7 @@ const ERROR = Object.freeze({
   COACH_NAME: '[ERROR] 코치 닉네임은 2~4글자 사이로만 가능합니다.',
   GROUP: '[ERROR] 코치는 2~5명과 같이 식사할 수 있습니다.',
   NOT_EAT: '[ERROR] 먹지 못하는 메뉴는 2개만 입력할 수 있습니다.',
+  NOT_IN_SAMPLE: '[ERROR] 메뉴 리스트에 없는 음식을 입력할 수 없습니다.',
 });
 
 module.exports = {

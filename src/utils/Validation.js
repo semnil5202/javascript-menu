@@ -22,7 +22,7 @@ class Validation {
   notEat(input) {
     const foods = input.split(UTIL.SEPARATOR);
     if (foods.length > COACH.NOT_EAT_MAX) throw new Error(ERROR.NOT_EAT);
-    if (!this.#foodsString(foods)) throw new Error('E');
+    if (!this.#foodsString(foods)) throw new Error(ERROR.NOT_IN_SAMPLE);
   }
 
   #foodsString(foods) {
