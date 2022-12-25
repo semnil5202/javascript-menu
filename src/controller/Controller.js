@@ -74,7 +74,7 @@ class Controller {
   }
 
   #outputResult() {
-    const results = this.#service.defineCoachFoodOfWeak().getFoodOfWeak();
+    const results = this.#service.defineCoachFoodOfWeek().getFoodOfWeek();
     results.forEach((list) => {
       OuputView.listResult(
         list.getCoachName(),

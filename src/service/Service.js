@@ -17,10 +17,10 @@ class Service {
     this.#coachLists[coachNumber].setNotEatList(notEatLists);
   }
 
-  defineCoachFoodOfWeak() {
+  defineCoachFoodOfWeek() {
     const results = [];
     this.#coachLists.forEach((list) => {
-      const foods = new Food(list, this.#catogoryList).foodOfWeak();
+      const foods = new Food(list, this.#catogoryList).foodOfWeek();
       results.push(foods);
     });
     return new ServiceResultDto(results);

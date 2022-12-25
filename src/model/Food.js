@@ -14,7 +14,7 @@ class Food {
     this.#categoryList = categoryList;
   }
 
-  foodOfWeak() {
+  foodOfWeek() {
     this.#categoryList.forEach((category) => {
       const foodList = this.#makeFoodList(category);
       this.#recommendFood(foodList);

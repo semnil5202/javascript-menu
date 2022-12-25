@@ -1,12 +1,12 @@
 class ServiceResultDto {
-  #foodOfWeak;
+  #foodOfWeek;
 
-  constructor(foodOfWeak) {
-    this.#foodOfWeak = foodOfWeak;
+  constructor(foodOfWeek) {
+    this.#foodOfWeek = foodOfWeek;
   }
 
-  getFoodOfWeak() {
-    return this.#foodOfWeak;
+  getFoodOfWeek() {
+    return this.#foodOfWeek;
   }
 }
 
