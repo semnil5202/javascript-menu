@@ -4,7 +4,6 @@ const { UTIL } = require('../utils/constant');
 
 class Controller {
   #index = 0;
-  #coachs;
   #service;
   #validation;
 
@@ -26,25 +25,25 @@ class Controller {
 
   #checkCoach(input) {
     try {
-      this.#coachs = input.split(UTIL.SEPARATOR);
-      this.#validation.coach(this.#coachs);
-      this.#service.makeCoachList(this.#coachs);
-      this.#checkCoachList();
+      const coach = input.split(UTIL.SEPARATOR);
+      this.#validation.coach(coach);
+      this.#service.makeCoachList(coach);
+      this.#checkCoachList(coach);
     } catch (error) {
       OuputView.errorMessage(error);
       this.#inputCoach();
     }
   }
 
-  #checkCoachList() {
-    this.#inputNotEat(this.#coachs[this.#index]);
+  #checkCoachList(coach) {
+    this.#inputNotEat(coach[this.#index], coach);
   }
 
-  #inputNotEat(coachName) {
+  #inputNotEat(coachName, coach) {
     InputView.notEat(coachName, (input) => {
       this.#checkNotEat(input);
-      if (this.#index === this.#coachs.length) this.#outputResultMent();
-      else this.#checkCoachList();
+      if (this.#index === coach.length) this.#outputResultMent();
+      else this.#checkCoachList(coach);
     });
   }
 
