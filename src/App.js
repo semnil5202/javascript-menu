@@ -1,9 +1,10 @@
-const Controller = require('../src/controller/Controller');
-const Service = require('../src/service/Service');
+const Controller = require('./controller/Controller');
+const Service = require('./service/Service');
+const Validation = require('./utils/Validation');
 
 class App {
   play() {
-    new Controller(new Service()).startService();
+    new Controller(new Service(), new Validation()).startService();
   }
 }
 

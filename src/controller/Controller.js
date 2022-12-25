@@ -1,15 +1,16 @@
 const InputView = require('../view/InputView');
 const OuputView = require('../view/OutputView');
-const Validation = require('../utils/Validation');
 const { UTIL } = require('../utils/constant');
 
 class Controller {
   #index = 0;
   #coachs;
   #service;
+  #validation;
 
-  constructor(service) {
+  constructor(service, validation) {
     this.#service = service;
+    this.#validation = validation;
   }
 
   startService() {
@@ -26,8 +27,7 @@ class Controller {
   #checkCoach(input) {
     try {
       this.#coachs = input.split(UTIL.SEPARATOR);
-      Validation.coachName(this.#coachs);
-      Validation.coachNumber(this.#coachs);
+      this.#validation.coach(this.#coachs);
       this.#service.makeCoachList(this.#coachs);
       this.#checkCoachList();
     } catch (error) {
@@ -50,7 +50,7 @@ class Controller {
 
   #checkNotEat(input) {
     try {
-      Validation.notEat(input);
+      this.#validation.notEat(input);
       this.#service.setCoachNotEatList(this.#index, input);
       this.#index += 1;
     } catch (error) {
